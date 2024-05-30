@@ -24,6 +24,7 @@ Close the Network Page and then open <b>DMX Protocols</b> to configure your SACN
 
 Click the <b>DMX Protocols</b> button in the Settings window and click on the <b>SACN tab</b>. Under the <b>SACN tab</b>, ensure that that the preferred IP Address is 
 
-x
+To create Mini Windows of tools that you would need, you just need to hold left click of your mouse or trackpad and draw a desired area of how big you want it to be. After you let go of the left click, a pop up window will appear showing you a lost of tools that you can use as show below:
+<img src="Captures/AddToolWindowMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
 
 
