@@ -29,7 +29,7 @@ It is important that we first patch the lighting fixtures we have in S536. In S5
 Select <b>Insert New Fixtures</b> and search up the fixtures needed to be patched. Ensure that all fixtures are of the same <b>type</b>, <b>mode</b> and in their respective <b>DMX Channel</b> and <b>Universes</b> as shown below: <br>
 <img src="Captures/ePAR180patchsettings.png" alt="ePAR 180 settings" width="1000" height="300"/> <br>
 <img src="Captures/MiniPanelpatchsettings.png" alt="MiPFX 1 settings" width="1000" height="300"/> <br>
-<img src="Captures/Mistralpatchsettings.png" alt="Mistral 1 settings" width="1000" height="300"/> <br>
+<img src="Captures/Mistral1patchsettings.png" alt="Mistral 1 settings" width="1000" height="300"/> <br>
 <img src="Captures/MagicBladepatchsettings.png" alt="MBFX 1 settings" width="1000" height="300"/> <br>
 Once all has been configured, you can leave the <b>Patch</b> window by pressing <b>Save and Exit</b>.
 
