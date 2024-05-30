@@ -19,7 +19,7 @@ C-->D[Lighting Fixtures]
 ```
 
 ## Setup for SACN Connection
-Before moving to software configuration, ensure that a LAN cable is connected between the laptop and the SACN Module of the light fixtures and also a USB Cable to connect the MA3 Console to the Laptop as it is not....
+Before moving to software configuration, ensure that a LAN cable is connected between the laptop and the SACN Module of the light fixtures and also a USB Cable to connect the MA3 Console to the Laptop.
 
 First click on the settings button that can be found in the left hand column of the screen. Once it is clicked upon, a pop up window will appear as shown below. <br> 
 <img src="Captures/settingsMA3.png" alt="Settings Pop-up" width="500" height="300"/>
