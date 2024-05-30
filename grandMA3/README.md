@@ -36,16 +36,16 @@ Once all has been configured, you can leave the <b>Patch</b> window by pressing 
 
 ## Setting Up MA3 Windows
 To create Mini Windows of tools that you would need, you just need to hold left click of your mouse or trackpad and draw a desired area of how big you want it to be. After you let go of the left click, a pop up window will appear showing you a lost of tools that you can use as show below: <br>
-<img src="Captures/ColorPickerPageMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
+<img src="Captures/AddToolWindowMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
 <br>
 We have to create 2 Pages in total; "3D Viewer" and "Color Picker".
 In the first page, create windows of <b>Fixture Sheet</b> and <b>3D viewer</b> that can be found under the <b>Common</b> tab of the Tools Pop-out window. <br>
-<img src="Captures/3DViewerWindow.png" alt="3D Viewer" width="500" height="300"/>
+<img src="Captures/3DViewerWindow.png" alt="Settings Pop-up" width="500" height="300"/>
 <br>
 The Fixture Sheet shows the fixtures you have patched and you can select on a particular fixture from the fixture sheet and it will be highlighted yellow on the 3D Viewer window. You can also add in a <b>Groups</b> mini window to group the different team fixtures for your own convenience. This tool can be found under the <b>Presets</b> tab. After creating the windows, <b>Crtl + S</b> and right click on a empty square grid at the right hand column of the page to save the screen. Long Right click the grid again to rename it to <b>"3D Viewer"</b>.
 
 For the second page, create windows for <b>Color Picker</b>, <b>Color</b>, <b>Gobo</b>, <b>Sequence</b> and <b>3D Viewer</b>.<br>
-<img src="Captures/.png" alt="3D Viewer" width="500" height="300"/>
+<img src="Captures/ColorPickerPageMA3.png" alt="Settings Pop-up" width="500" height="300"/>
 <br>
 Store the different colors and Gobo presets you want into the the grids of the respective tool windows and save the screen under <b>"Color Picker"</b>.
 
