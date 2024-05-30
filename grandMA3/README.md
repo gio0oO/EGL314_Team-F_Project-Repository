@@ -27,7 +27,7 @@ First click on the settings button that can be found in the left hand column of 
 Click on <b>Network</b> first to ensure that the network is online as shown as below: <br>
 <img src="Captures/NetworkPage.png" alt="Network Page" width="500" height="300"/>
 
-Close the <b>Network Page</b> and then open <b>DMX Protocols</b> to configure your SACN Connection Settings. Under <b>Preferred IP</b>, ensure that the IP address is <b>192.168.200.73</b> and that the options for Enable Output and blah blah is selected. Once you have configured these settings, you have successfully connected the console to the light fixtures of S536.
+Close the <b>Network Page</b> and then open <b>DMX Protocols</b> to configure your SACN Connection Settings. Under <b>Preferred IP</b>, ensure that the IP address is <b>192.168.200.73</b> and that the options for <b>Enable Output</b> and <b>Interface</b> is selected. Once you have configured these settings, you have successfully connected the console to the light fixtures of S536.
 
 ## Patching of Lighting Fixtures
 It is important that we first patch the lighting fixtures we have in S536. In S536, we have a total of 24 fixtures excluding the Lecturer's hoist to patch. Each group has 4 fixtures each, one ePAR 180, one MiPFX 1, one Mistral 1 and one MBFX 1. Each Group has its own universe for its fixtures to connect to. Group A connects to Universe 1, Group B to Universe 2 and it continues to Team F. To patch the lights, select <b>settings</b> and click <b>Patch</b>. <br>
