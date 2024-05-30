@@ -36,7 +36,7 @@ Once all has been configured, you can leave the <b>Patch</b> window by pressing 
 
 ## Setting Up MA3 Windows
 To create Mini Windows of tools that you would need, you just need to hold left click of your mouse or trackpad and draw a desired area of how big you want it to be. After you let go of the left click, a pop up window will appear showing you a lost of tools that you can use as show below: <br>
-<img src="Captures/AddToolWindowMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
+<img src="Captures/ColorPickerPageMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
 <br>
 We have to create 2 Pages in total; "3D Viewer" and "Color Picker".
 In the first page, create windows of <b>Fixture Sheet</b> and <b>3D viewer</b> that can be found under the <b>Common</b> tab of the Tools Pop-out window. <br>
