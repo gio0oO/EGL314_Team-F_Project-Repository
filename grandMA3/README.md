@@ -1,5 +1,5 @@
 # grandMA3 LightShow Documentation
-This file contains the steps of how we created the different light shows for Intro, win, lose and lose a health audio cues.
+This file contains the steps of how we created the different light shows for <b>Intro</b>, <b>win</b>, <b>lose</b> and <b>lose a health</b> audio cues.
 Do note that these LightShows are only compatible with the current layout of lighting fixtures in S536.
 
 ## Hardware
@@ -47,7 +47,7 @@ The <b>Fixture Sheet</b> shows the fixtures you have patched and you can select 
 For the second page, create windows for <b>Color Picker</b>, <b>Color</b>, <b>Gobo</b>, <b>Sequence</b> and <b>3D Viewer</b>.<br>
 <img src="Captures/ColorPickerPageMA3.png" alt="Settings Pop-up" width="500" height="300"/>
 <br>
-Store the different colors and Gobo presets you want into the the grids of the respective tool windows and save the screen under <b>"Color Picker"</b>.
+Store the different colors and Gobo presets you want into the the grids of the respective tool windows and save the screen under <b>"Color Picker"</b>.To store the different presets, click the the desired preset, the <b>Store</b> button on the console and then the grid you want to place it in.
 
 
 
