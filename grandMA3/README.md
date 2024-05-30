@@ -26,7 +26,7 @@ Close the <b>Network Page</b> and then open <b>DMX Protocols</b> to configure yo
 It is important that we first patch the lighting fixtures we have in S536. In S536, we have a total of 24 fixtures excluding the Lecturer's hoist to patch. Each group has 4 fixtures each, one ePAR 180, one MiPFX 1, one Mistral 1 and one MBFX 1. Each Group has its own universe for its fixtures to connect to. Group A connects to Universe 1, Group B to Universe 2 and it continues to Team F. To patch the lights, select <b>settings</b> and click <b>Patch</b>. <br>
 <img src="Captures/Patchwindowsettings.png" alt="Patch Window" width="500" height="300"/>
 <br>
-Select <b>Insert New Fixtures</b> and search up the fixtures needed to be patched. Ensure that all fixtures are of the same <b>type</b>, <b>mode</b> and in their respective <b>DMX Channel</b> and <b>Universes</b> as shown below: <br>
+Select <b>Insert</b> and search up the fixtures needed to be patched. Ensure that all fixtures are of the same <b>type</b>, <b>mode</b> and in their respective <b>DMX Channel</b> and <b>Universes</b> as shown below: <br>
 <img src="Captures/ePAR180patchsettings.png" alt="ePAR 180 settings" width="1000" height="300"/> <br>
 <img src="Captures/MiniPanelpatchsettings.png" alt="MiPFX 1 settings" width="1000" height="300"/> <br>
 <img src="Captures/Mistral1patchsettings.png" alt="Mistral 1 settings" width="1000" height="300"/> <br>
