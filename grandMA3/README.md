@@ -13,8 +13,8 @@ Do note that these LightShows are only compatible with the current layout of lig
 ## System Diagram
 ```mermaid
 graph TD;
-B[grandMA3 Console]-USB->A[Laptop]
-A-LAN->C[SACN Module]
+B[grandMA3 Console]-->A[Laptop]
+A-->C[SACN Module]
 C-->D[Lighting Fixtures]
 ```
 
