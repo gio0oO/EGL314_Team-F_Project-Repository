@@ -9,4 +9,14 @@ Do note that these LightShows are only compatible with the current layout of lig
 ## Software (Windows)
 1. grandMA3 software (onPC 1.9.7.0)
 
+## System Diagram
+
+## Setup for SACN Connection
+First click on the settings button that can be found in the left hand column of the screen. Once it is clicked upon, a pop up window will appear as shown below. <br> 
+![]("C:\Users\samue\OneDrive\Pictures\Screenshots\settingsMA3.png")
+
+## Setting up grandMA3 windows
+
+x
+
 
