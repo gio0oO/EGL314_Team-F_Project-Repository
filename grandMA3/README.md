@@ -11,6 +11,12 @@ Do note that these LightShows are only compatible with the current layout of lig
 1. grandMA3 software (onPC 1.9.7.0)
 
 ## System Diagram
+```mermaid
+graph TD;
+B[grandMA3 Console]-->A[Laptop]
+A-->C[SACN Module]
+C-->D[Lighting Fixtures]
+```
 
 ## Setup for SACN Connection
 Before moving to software configuration, ensure that a LAN cable is connected between the laptop and the SACN Module of the light fixtures and also a USB Cable to connect the MA3 Console to the Laptop as it is not....
