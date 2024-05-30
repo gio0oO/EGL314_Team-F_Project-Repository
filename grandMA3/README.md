@@ -22,9 +22,8 @@ Click on Network first to ensure that the network is online as shown as below.
 
 Close the Network Page and then open <b>DMX Protocols</b> to configure your SACN Connection Settings. Under <b>Preferred IP</b>, ensure that the IP address is <b>192.168.200.73</b> and that the options for Enable Output and blah blah is selected.
 
-## Setting up grandMA3 windows
+Click the <b>DMX Protocols</b> button in the Settings window and click on the <b>SACN tab</b>. Under the <b>SACN tab</b>, ensure that that the preferred IP Address is 
 
-To create Mini Windows of tools that you would need, you just need to hold left click of your mouse or trackpad and draw a desired area of how big you want it to be. After you let go of the left click, a pop up window will appear showing you a lost of tools that you can use as show below:
-<img src="Captures/AddToolWindowMA3.png" alt="Add Tool Pop-up" width="500" height="300"/>
+x
 
 
