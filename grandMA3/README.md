@@ -42,7 +42,7 @@ We have to create 2 Pages in total; "3D Viewer" and "Color Picker".
 In the first page, create windows of <b>Fixture Sheet</b> and <b>3D viewer</b> that can be found under the <b>Common</b> tab of the Tools Pop-out window. <br>
 <img src="Captures/3DViewerWindow.png" alt="Settings Pop-up" width="500" height="300"/>
 <br>
-The Fixture Sheet shows the fixtures you have patched and you can select on a particular fixture from the fixture sheet and it will be highlighted yellow on the 3D Viewer window. You can also add in a <b>Groups</b> mini window to group the different team fixtures for your own convenience. This tool can be found under the <b>Presets</b> tab. After creating the windows, <b>Crtl + S</b> and right click on a empty square grid at the right hand column of the page to save the screen. Long Right click the grid again to rename it to <b>"3D Viewer"</b>.
+The <b>Fixture Sheet</b> shows the fixtures you have patched and you can select on a particular fixture from the fixture sheet and it will be highlighted yellow on the 3D Viewer window. You can also add in a <b>Groups</b> mini window to group the different team fixtures for your own convenience. This tool can be found under the <b>Presets</b> tab. After creating the windows, <b>Crtl + S</b> and right click on a empty square grid at the right hand column of the page to save the screen. Long Right click the grid again to rename it to <b>"3D Viewer"</b>.
 
 For the second page, create windows for <b>Color Picker</b>, <b>Color</b>, <b>Gobo</b>, <b>Sequence</b> and <b>3D Viewer</b>.<br>
 <img src="Captures/ColorPickerPageMA3.png" alt="Settings Pop-up" width="500" height="300"/>
