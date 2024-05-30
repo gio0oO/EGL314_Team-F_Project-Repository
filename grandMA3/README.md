@@ -13,7 +13,7 @@ Do note that these LightShows are only compatible with the current layout of lig
 
 ## Setup for SACN Connection
 First click on the settings button that can be found in the left hand column of the screen. Once it is clicked upon, a pop up window will appear as shown below. <br> 
-![](Captures/settingsMA3.png)
+<img src="Captures/settingsMA3.png" alt="Settings Pop-up" width="500" height="300"/>
 
 ## Setting up grandMA3 windows
 
