@@ -24,7 +24,8 @@ Before moving to software configuration, ensure that a LAN cable is connected be
 First click on the settings button that can be found in the left hand column of the screen. Once it is clicked upon, a pop up window will appear as shown below. <br> 
 <img src="Captures/settingsMA3.png" alt="Settings Pop-up" width="500" height="300"/>
 
-Click on <b>Network</b> first to ensure that the network is online as shown as below.
+Click on <b>Network</b> first to ensure that the network is online as shown as below: <br>
+<img src="Captures/NetworkPage.png" alt="Network Page" width="500" height="300"/>
 
 Close the <b>Network Page</b> and then open <b>DMX Protocols</b> to configure your SACN Connection Settings. Under <b>Preferred IP</b>, ensure that the IP address is <b>192.168.200.73</b> and that the options for Enable Output and blah blah is selected. Once you have configured these settings, you have successfully connected the console to the light fixtures of S536.
 
