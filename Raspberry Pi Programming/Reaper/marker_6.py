@@ -1,5 +1,5 @@
 # Huats 2023 oscstarterkit
-# This python script demonstrate controlling Reaper (trigger play/stop playback) using a Raspberry Pi through the
+# This python script demonstrate controlling Reaper (Jump to Marker 1) using a Raspberry Pi through the
 # OSC messaging protocol
 from pythonosc import udp_client
 
@@ -15,11 +15,11 @@ def send_message(receiver_ip, receiver_port, address, message):
 	except:
 		print("Message not sent")
 
-# FOR INFO: IP address and port of the receiving Raspberry Pi
-PI_A_ADDR = "192.168.254.195"		# wlan ip
-PORT = 8600
+# FOR INFO: IP address and port of the receiving Reaper
+PI_A_ADDR = "192.168.254.30"		# wlan ip
+PORT = 8000
 
-addr = "/action/40044" # Play/Stop Function in Reaper
+addr = "/action/40166" # Jump to Marker Six
 msg = float(1) # Trigger TRUE Value
 
 send_message(PI_A_ADDR, PORT, addr, msg)
