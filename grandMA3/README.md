@@ -5,7 +5,7 @@ Do note that these LightShows are only compatible with the current layout of lig
 ## Hardware
 1. Laptop
 2. LAN cable
-3. USB Cable
+3. Type A to Type B USB Cable
 
 ## Software (Windows)
 1. grandMA3 software (onPC 1.9.7.0)
