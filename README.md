@@ -2,5 +2,5 @@
 
 We are Team F of the MTS 2024 Batch and in this repository, it features documentation of our project S.O.N.I.C Game Station 1. It includes all the installations made, raspi codes and operation procedures. 
 
-Our game station is a stealth walking station that requires players to pass through a obstacle filled path using <b>Piezo Disk</b> and <b>Ultrasonic sensors</b> as fast as possible without detetcting them, testing the player's agility and abilty to be stealthy. 
-We have designed a poster to explain the rules and will be uploaded below.
+Our game station is a Target Practice station that requires players to shoot at targets with shurikens. Their aim is to hit at the correct targets indictated by directional audio cues, meaning if a sound comes from that target, that is the target to aim for. T
+We have designed an A4 poster to explain the rules and will be uploaded below.
