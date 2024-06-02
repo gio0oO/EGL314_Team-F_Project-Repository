@@ -11,4 +11,4 @@ To create a spotlight that leads the participant from the entrance to the front 
 <br>
 <img src="Captures/" alt="Intro Pos 4" width="500" height="300"/>
 <br>
-To make the spotlight or in this case the Mistral move smoothly along the path you have created, we will use MA-tricks. MA-tricks is a toll that helps to combine our different cues into a sequence, making the spotlight travel from the different positions you have created previously, seamlessly.
+To make the spotlight or in this case the Mistral move smoothly along the path you have created, we will use MA-tricks. MA-tricks is a tool that helps to combine our different cues into a sequence, making the spotlight travel from the different positions you have created previously, seamlessly.
