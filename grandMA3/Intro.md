@@ -11,6 +11,7 @@ To create a spotlight that leads the participant from the entrance to the front 
 <br>
 <img src="Captures/IntroPos4.jpg" alt="Intro Pos 4" width="500" height="300"/>
 <br>
-To make the spotlight or in this case the Mistral move smoothly along the path you have created, we will use MA-tricks. MA-tricks is a tool that helps to combine our different cues into a sequence, making the spotlight travel from the different positions you have created previously, seamlessly.<br>
+To make the spotlight or in this case the Mistral move smoothly along the path you have created, we will use Phaser. Phaser is a tool that helps to combine our different steps into a cue, making the spotlight travel from the different positions I have created previously, seamlessly.<br>
 
-In each step,select the positions in a chronological order with the respective focus settings, colour, Gobo and dimmer Level.
+Doing the steps in the 4 images one phase at a time, we created the Intro Light ShowFile that guides participants to Station F.
+ 
