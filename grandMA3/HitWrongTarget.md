@@ -1,5 +1,5 @@
-## Hit Wrong Target
-The steps to achieving this ShowFile is also the same as for the Hitting the Correct Target ShowFile.<br>
+## Hit Wrong Target Light Show
+The steps to achieving this Light Show is also the same as for the Hitting the Correct Target ShowFile.<br>
 Just repeat the steps but change the dimmer color to Red.
 <br>
 Step 1:<br>
