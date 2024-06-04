@@ -17,7 +17,7 @@ def send_message(receiver_ip, receiver_port, address, message):
 
 # FOR INFO: IP address and port of the receiving Reaper
 PI_A_ADDR = "192.168.254.30"		# wlan ip
-PORT = 8000
+PORT = 7000
 
 addr = "/action/40166" # Jump to Marker Six
 msg = float(1) # Trigger TRUE Value

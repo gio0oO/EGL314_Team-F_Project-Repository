@@ -16,8 +16,8 @@ def send_message(receiver_ip, receiver_port, address, message):
 		print("Message not sent")
 
 # FOR INFO: IP address and port of the receiving Raspberry Pi
-PI_A_ADDR = "192.168.254.195"		# wlan ip
-PORT = 8600
+PI_A_ADDR = "192.168.254.30"		# wlan ip
+PORT = 7000
 
 addr = "/action/40044" # Play/Stop Function in Reaper
 msg = float(1) # Trigger TRUE Value
