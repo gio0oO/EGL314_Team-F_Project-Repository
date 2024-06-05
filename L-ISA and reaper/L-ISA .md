@@ -2,11 +2,15 @@
 
 Today I will be showing how to setup L-ISA controller and processor.
 
-'''mermaid
+```mermaid
 graph LR
-A[Raspberry Pi] --OSC--> B[L-ISA Controller]
-B --Spatial Metadata--> C[L-ISA Processor]
-C --Spatial Metadata--> B
-D[Digital Audio Workstation<br>DAW] --L-ISA Bridge--> C
-C --3.5mm/DVS--> E[Output Interface]
-'''
+A[L-ISA Controller] --Spatial Metadata--> B[L-ISA Processor]
+B --Spatial Metadata--> A
+C[Digital Audio Workstation<br>DAW] --L-ISA Bridge--> B
+B --3.5mm/DVS--> D[Output Interface]
+```
+
+# Configuration (L-ISA)
+1.Open L-ISA Processor and select your heaphone output
+
+![L-ISA Processor](L-ISA_Processor.png)
