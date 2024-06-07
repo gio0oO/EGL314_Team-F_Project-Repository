@@ -1,6 +1,6 @@
 # Reaper(x64) Guide
 
-Today I will show you on how to run **Reaper** for midi timecode for **L-ISA Controller**
+Today I will show you on how to run **Reaper** for MIDI timecode for **L-ISA Controller** followed by Using Raspi to control **Reaper**.
 
 # Resources
 * L-ISA Controller
@@ -15,19 +15,23 @@ graph LR
 A[L-ISA Controller] --Spatial Metadata--> B[L-ISA Processor]
 B --Spatial Metadata--> A
 C[Digital Audio Workstation<br>DAW] --L-ISA Bridge--> B
+D[Raspberry Pi] --LAN/WiFi--> C[Reaper<br>DAW]
+
 ```
 
-# Configuration
+# Configuration (Setup MIDI Timecode)
 1. Open **loopMIDI** and create a new virtual port by pressing the plus(+) sign after renaming the port to the name of your choice.
 
 ![loopMIDI](Images/loopMIDI.png)
 
 2. Open **Reaper** and create a new project
+
 3. Go to insert and select SMPTE LTC/MTC Timecode Generator and the timecode generator will appear on the timelime selected
 
 ![Timecode Generator](Images/Timecode_Generator.png)
 
 4. After the timecode generator appear, right click on the timecode generator and select source properties
+
 5. On the SMPTE Generator Properties, select Send MIDI(MTC) to send MIDI Timecode and select Ok to save the settings
 
 ![SMPTE Generator Properties](Images/SMPTE_Generator_Properties.png)
@@ -45,3 +49,15 @@ C[Digital Audio Workstation<br>DAW] --L-ISA Bridge--> B
 * In **Reaper**, hit Play and Verify that the timecode is recieved in the **L-ISA Controller** with the right frame rate and timing
 
 ![L-ISA MIDI](Images/L-ISA_MIDI.png)
+
+# Configuration (Reaper for OSC)
+
+1. Go to **Reaper References** (Ctrl+P)
+2. Navigate to **Control/OSC/Web**
+3. Click on ADD to configure a new OSC device
+
+![OSC Reaper Preferences](Images/OSC_Reaper_Preferences.png)
+
+4. Configure new OSC Device
+
+![OSC Control](Images/OSC_Control.png)
