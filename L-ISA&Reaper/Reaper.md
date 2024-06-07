@@ -41,11 +41,24 @@ D[Raspberry Pi] --LAN/WiFi--> C[Reaper<br>DAW]
 
 ![Reaper Preferences](Images/Reaper_References.png)
 
-7. In Reaper,click on the **Route** button of timecode generator track in the **Mixer** to open the routing panel of the MIDI TimeCode Track and select the **loopMIDI** port in the MIDI Hardware Output list
+7. Also in **Reaper preferences**, Reaper must be inform of which file to recieve L-ISA plug-ins folder
+
+* Select **VST** in the list
+* Enter the path to the folder where L-ISA plug-ins are installed, like c: :\Program Files\L-Acoustics\L-ISA Controller\VST3\
+* Hit Rescan
+
+![VST Settings](Images/VST_Settings.png)
+
+8. Also in **Reaper Preferences**, select **L-ISA audio bridge** as an audio device
+* Select **ASIO** First
+
+![Audio Bridge](Images/Audio_Bridge.png)
+
+9. In Reaper,click on the **Route** button of timecode generator track in the **Mixer** to open the routing panel of the MIDI TimeCode Track and select the **loopMIDI** port in the MIDI Hardware Output list
 
 ![MIDI Routing](Images/MIDI_Routing.png)
 
-8. In the **L-ISA Controller**, go to **Settings > MIDI** and select on **MTC** from loopMIDI Port as the MIDI Interface
+10. In the **L-ISA Controller**, go to **Settings > MIDI** and select on **MTC** from loopMIDI Port as the MIDI Interface
 * In **Reaper**, hit Play and Verify that the timecode is recieved in the **L-ISA Controller** with the right frame rate and timing
 
 ![L-ISA MIDI](Images/L-ISA_MIDI.png)

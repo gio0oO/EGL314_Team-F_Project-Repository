@@ -9,5 +9,5 @@ In this document, you will get to know how to link **Reaper, L-ISA Controller an
 
 In this document, it will be seperated into 2 parts:
 
-1. Reaper For MIDI Timecode - ![Click Here](./Reaper.md)
-2. L-ISA Controller and Processor - ![Click Here](./L-ISA.md)
+1. Reaper For MIDI Timecode - Click [Here](./Reaper.md)
+2. L-ISA Controller and Processor - Click [Here](./L-ISA.md)
