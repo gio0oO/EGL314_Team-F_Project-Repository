@@ -1,6 +1,6 @@
 # Reaper(x64) Guide
 
-Today I will show you on how to run reaper(x64) for midi timecode for L-ISA controller
+Today I will show you on how to run **Reaper** for midi timecode for **L-ISA Controller**
 
 # Resources
 * L-ISA Controller
