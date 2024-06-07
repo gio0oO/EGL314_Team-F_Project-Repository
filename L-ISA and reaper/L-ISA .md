@@ -3,7 +3,6 @@
 Today I will be showing how to setup L-ISA controller and processor.
 
 Resources
-
 * L-ISA Controller
 * L-ISA Processor
 * Reaper(x64)
