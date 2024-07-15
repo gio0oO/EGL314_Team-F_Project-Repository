@@ -1,0 +1,9 @@
+graph TD
+    Raspi[Raspberry Pi]
+    PD1[Piezo Disk 1]
+    PD2[Piezo Disk 2]
+    PD3[Piezo Disk 3]
+
+    Raspi -->|Jumper Wires| PD1
+    Raspi -->|Jumper Wires| PD2
+    Raspi -->|Jumper Wires| PD3
