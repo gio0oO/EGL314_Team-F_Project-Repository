@@ -2,6 +2,7 @@ import tkinter as tk
 from threading import Thread
 from pythonosc import udp_client
 import time
+import random
 import subprocess
 
 # Functions to control lasers
@@ -16,10 +17,15 @@ def off_pattern(receiver_ip, receiver_port):
             send_message(receiver_ip, receiver_port, "/print", f"{speaker},{channel},0")
 
 # Functions to control NeoPixel lights
-def send_color(receiver_ip, receiver_port, r, g, b):
+def send_color(receiver_ip, receiver_port, r, g, b, brightness=255):
     client = udp_client.SimpleUDPClient(receiver_ip, receiver_port)
-    client.send_message("/color", [r, g, b])
-    print(f"Color set to ({r}, {g}, {b}).")
+    client.send_message("/color", [r, g, b, brightness])
+    print(f"Color set to ({r}, {g}, {b}) with brightness {brightness}.")
+
+def send_brightness(receiver_ip, receiver_port, brightness):
+    client = udp_client.SimpleUDPClient(receiver_ip, receiver_port)
+    client.send_message("/brightness", [brightness])
+    print(f"Brightness set to {brightness}.")
 
 # IP address and port of the receiving Raspberry Pi
 PI_A_ADDR = "192.168.254.49"  # Change to your RPi's IP address for lasers
@@ -54,63 +60,60 @@ def custom_pattern():
         for channel in range(1, 3):
             send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
 
+def random_laser():
+    speaker = random.randint(1, 12)
+    channel = random.randint(1, 2)
+    send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
+
 # Function to control the laser show and NeoPixel lights
 def laser_show():
     pattern_duration = 0.41  # 5 seconds per pattern
     total_show_duration = 30  # Total show duration in seconds
-    colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)]
+    colors = [(0, 0, 255), (128, 0, 128), (255, 0, 0)]  # Blue, Purple, Red
     color_index = 0
+    brightness = 255  # Initial brightness level
     start_time = time.time()
 
     while time.time() - start_time < total_show_duration:
         right_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
 
         back_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
 
         left_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
 
         front_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
 
         custom_pattern()  # Activate custom pattern
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
 
-        front_side_pattern()
-        back_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
+        # Randomly activate a single laser for effect
+        random_laser()
+        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)], brightness)
         color_index += 1
         time.sleep(pattern_duration)
         off_pattern(PI_A_ADDR, PORT)
-
-        left_side_pattern()
-        right_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
-
-        
 
     off_pattern(PI_A_ADDR, PORT)
-    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0)  # Turn off NeoPixel
+    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0, 0)  # Turn off NeoPixel
 
 # GUI setup
 def start_show():
@@ -124,7 +127,7 @@ def start_show():
 
 def stop_show():
     off_pattern(PI_A_ADDR, PORT)
-    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0)  # Turn off NeoPixel
+    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0, 0)  # Turn off NeoPixel
 
 # Main GUI window
 root = tk.Tk()

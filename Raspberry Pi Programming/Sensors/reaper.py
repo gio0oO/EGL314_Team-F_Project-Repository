@@ -1,5 +1,5 @@
-from pythonosc import udp_client, osc_message_builder
-import time
+# Huats 2023 oscstarterkit
+from pythonosc import udp_client
 
 def send_message(receiver_ip, receiver_port, address, message):
 	try:
@@ -13,13 +13,13 @@ def send_message(receiver_ip, receiver_port, address, message):
 	except:
 		print("Message not sent")
 
-#change the below values
+# FOR INFO: IP address and port of the receiving Raspberry Pi
 if __name__ == "__main__":
-    LAPTOP_IP = "192.168.254.30"		# send to laptop w grandMA3
-    PORT = 8888                     # laptop w grandMA3 port number
-    addr = "/gma3/cmd"
 
-    send_message(LAPTOP_IP, PORT, addr, "Off RunningSequence")
+    PI_A_ADDR = "192.168.1.100"		# wlan ip
+    PORT = 2000
 
+    addr = "/print"
+    msg = "salutations from pi_B"
 
-
+    send_message(PI_A_ADDR, PORT, addr, msg)
