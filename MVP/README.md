@@ -47,3 +47,9 @@ Follow the installation guide and instructions for setting up the sensors in the
 ## Running the Game
 
 Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
+
+## Example Setup
+
+Here is an example of how we set up our station:
+
+![Setup Example]("C:\Users\giova\Downloads\Range Assets\photo_2024-07-20_20-04-35.jpg")
