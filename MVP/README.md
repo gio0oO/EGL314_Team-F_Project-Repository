@@ -52,4 +52,4 @@ Installation guide for the software and instructions for running the game can be
 
 Here is an example of how we set up our station:
 
-![Setup Example]("C:\Users\giova\Downloads\Range Assets\photo_2024-07-20_20-04-35.jpg")
+![Setup Example](path-to-your-image.jpg)
