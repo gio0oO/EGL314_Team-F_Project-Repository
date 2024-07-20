@@ -103,6 +103,10 @@ The `Main.py` script is the primary file that runs the game. Below is an explana
   - Paired with `marker_2.py`
   - This sequence focuses the spotlight on the targets.
 
+### reaper.py
+
+The `reaper.py` file handles all the OSC communications between the Raspberry Pi, Reaper, and GrandMA. This integration is crucial for coordinating audio and lighting effects in sync with the game events.
+
 For detailed setup guides and code explanations, refer to the links above. If you have any questions or need further assistance, feel free to reach out.
 
 Happy coding!
