@@ -1,6 +1,6 @@
-# Game Codes Repository
+# Game Files Repository
 
-Welcome to the **Game Codes** repository! This is your go-to place for all relevant codes and setup instructions related to our game project.
+Welcome to the **Game Files** repository! This is your go-to place for all relevant codes and setup instructions related to our game project.
 
 ## Repository Overview
 
