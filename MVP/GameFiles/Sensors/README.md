@@ -63,41 +63,12 @@ deactivate
 
 This script allows you to test a piezo sensor connected to the GPIO pins of your Raspberry Pi. It detects vibrations and prints a message to the console whenever a vibration is detected.
 
-### Creating the Test Script
+### Creating and Running the Test Script
 
-Create a file named `piezo_test.py` in your project directory with the following content:
+1. **Create the Test Script:** Save the following code in a file named `piezo_test.py` in your project directory.
 
-```python
-import RPi.GPIO as GPIO
-import time
+   [**Download piezo_test.py**](./piezo_test.py)
 
-# Configure the GPIO pin
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-def detect_vibration(channel):
-    print("Vibration detected!")
-
-# Add an event detection on the piezo sensor pin
-GPIO.add_event_detect(17, GPIO.RISING, callback=detect_vibration)
-
-try:
-    # Run indefinitely
-    while True:
-        time.sleep(1)
-
-except KeyboardInterrupt:
-    print("Program stopped")
-
-finally:
-    GPIO.cleanup()
-```
-
-### Running the Script
-
-To test your piezo sensor, follow these instructions:
-
-1. **Connect the Piezo Sensor:** Ensure that the piezo sensor is connected as described in the [Wiring] section.
 2. **Run the Script:**
    - Open a terminal on your Raspberry Pi.
    - Navigate to the directory where you saved the `piezo_test.py` script.
