@@ -30,7 +30,8 @@ graph TD
 
 # The Range Game Setup
 
-This repo will teach you how to set up the game and run it all through your Raspberry Pi.
+This repository provides a comprehensive guide on setting up and running **The Range** game using your Raspberry Pi.
+
 
 ## Hardware Requirements
 
