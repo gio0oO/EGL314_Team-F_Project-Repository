@@ -9,14 +9,6 @@ This repository includes:
 - **Game Code:** The code that runs the game, including detailed instructions on how to set it up and execute it.
 - **Sensor Test Code:** The code to test the sensors and ensure they are functioning correctly.
 
-## Prerequisites
-
-Ensure you have the following:
-
-- **Raspberry Pi 4**
-- **Dupont wires**
-- **Piezo sensor**
-
 ## Setting Up
 
 ### Update Your Raspberry Pi
