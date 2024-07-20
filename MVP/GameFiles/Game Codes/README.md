@@ -2,12 +2,6 @@
 
 Welcome to the **Game Codes** repository! This is your go-to place for all relevant codes related to our game project.
 
-## Repository Overview
-
-This repository includes:
-
-- **Game Code:** The code that runs the game, including detailed instructions on how to set it up and execute it.
-- **Sensor Test Code:** The code to test the sensors and ensure they are functioning correctly.
 
 ## Setting Up
 
