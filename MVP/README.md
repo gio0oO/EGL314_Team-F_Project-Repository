@@ -41,8 +41,8 @@ This repo will teach you how to set up the game and run it all through your Rasp
 
 ## Setting Up Sensors
 
-Follow the installation guide and instructions for setting up the sensors in the [Sensors folder](link-to-Sensor-folder).
+Follow the installation guide and instructions for setting up the sensors in the [Sensors folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Sensors).
 
 ## Running the Game
 
-Installation guide for the software and instructions for running the game can be found in the [Game Code folder](link-to-Game-Code-folder).
+Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
