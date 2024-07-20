@@ -26,3 +26,23 @@ graph TD
     RPi_Laser_Master -->|WiFi| RPi_Laser_Slave3[Raspberry Pi - Laser Slave 3]
     RPi_Laser_Master -->|WiFi| RPi_Laser_Slave4[Raspberry Pi - Laser Slave 4]
     RPi_Laser_Master -->|WiFi| RPi_Neopixel[Raspberry Pi - Neopixel]
+```
+
+# The Range Game Setup
+
+This repo will teach you how to set up the game and run it all through your Raspberry Pi.
+
+## Hardware Requirements
+
+- Raspberry Pi 4
+- Piezo sensor
+- Boards
+- Dupont wires
+
+## Setting Up Sensors
+
+Follow the installation guide and instructions for setting up the sensors in the [Sensors folder](link-to-Sensor-folder).
+
+## Running the Game
+
+Installation guide for the software and instructions for running the game can be found in the [Game Code folder](link-to-Game-Code-folder).
