@@ -52,6 +52,16 @@ Installation guide for the software and instructions for running the game can be
 
 Here is an example of how we set up our station:
 
-![Setup Example](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/photo_2024-07-20_20-03-22.jpg)
+![Setup Example](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/BoardSetup.jpg)
 
-![Another](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/photo_2024-07-20_20-04-26.jpg)
+Here are the projectiles we used (Shurikens) and the holder we made for them:
+
+![Shurikens & Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/Shurikens&Holder.jpg)
+
+![Shuriken Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/ShurikenHolder.jpg)
+
+![Shuriken In Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/ShurikensInHolder.jpg)
+
+Here is how we placed and protected our Raspberry Pi
+
+![Raspi Placement](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/RaspiPlacement.jpg)
