@@ -18,7 +18,7 @@ graph TD
     L_ISA_Processor -->|MetaData| L_ISA_Controller[L-ISA Controller]
     L_ISA_Controller -->|DANTE| Yamaha_QL1[Yamaha QL1]
     Yamaha_QL1 -->|DANTE| Amplifier
-    Amplifier -->|Spk Cable| Speakers
+    Amplifier -->|Speaker Cable| Speakers
 
     Laptop_GUI[Laptop GUI] -->|WiFi| RPi_Laser_Master[Raspberry Pi - Laser Master]
     RPi_Laser_Master -->|WiFi| RPi_Laser_Slave1[Raspberry Pi - Laser Slave 1]
