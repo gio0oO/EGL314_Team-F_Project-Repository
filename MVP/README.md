@@ -12,7 +12,7 @@ Welcome to Team F's Game Showcase featuring **The Range**. This repository inclu
 graph TD
     Piezo_Sensor[Piezo Sensor] -->|GPIO| RPi_Game[Raspberry Pi - Game]
     RPi_Game -->|WiFi| GrandMA3[GrandMA3]
-    RPi_Game -->|WiFi| Reaper_DAW[Reaper DAW]
+    RPi_Game -->|WiFi| Reaper[Reaper]
     GrandMA3 -->|SACN| Moving_Heads[Moving Heads]
     Reaper_DAW -->|Dante VSC| L_ISA_Processor[L-ISA Processor]
     L_ISA_Processor -->|MetaData| L_ISA_Controller[L-ISA Controller]
