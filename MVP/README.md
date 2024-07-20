@@ -60,7 +60,7 @@ Here are the projectiles we used (Shurikens) and the holder we made for them:
 
 ![Shuriken Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/ShurikenHolder.jpg)
 
-![Shuriken In Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/ShurikensInHolder.jpg)
+![Shuriken In Holder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/ShurikenInHolder.jpg)
 
 Here is how we placed and protected our Raspberry Pi
 
