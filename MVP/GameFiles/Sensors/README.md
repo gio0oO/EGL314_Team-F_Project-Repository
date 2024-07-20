@@ -65,7 +65,7 @@ This script allows you to test a piezo sensor connected to the GPIO pins of your
 
 ### Creating the Test Script
 
-Create a new file named `piezo_test.py` in your project directory with the following content:
+Create a file named `piezo_test.py` in your project directory with the following content:
 
 ```python
 import RPi.GPIO as GPIO
