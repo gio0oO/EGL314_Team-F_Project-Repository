@@ -14,6 +14,7 @@ graph TD
     RPi_Game -->|WiFi| GrandMA3[GrandMA3]
     RPi_Game -->|WiFi| Reaper[Reaper]
     GrandMA3 -->|SACN| Moving_Heads[Moving Heads]
+    
     Reaper_DAW -->|Dante VSC| L_ISA_Processor[L-ISA Processor]
     L_ISA_Processor -->|MetaData| L_ISA_Controller[L-ISA Controller]
     L_ISA_Controller -->|DANTE| Yamaha_QL1[Yamaha QL1]
