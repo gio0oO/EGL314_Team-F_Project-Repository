@@ -60,7 +60,7 @@ These are the 2 main files that you need to run the whole game:
 
 - [Main.py](./Main.py)
 - [reaper_py](./reaper_py)
-- [SeqMarkGUI.py](./SeqMarkGUI.py)]
+- [SeqMarkGUI.py](./SeqMarkGUI.py)
 ### Main.py
 
 The `Main.py` script is the primary file that runs the game. Below is an explanation of the sequences we used, what they're for, and which marker we paired them up with:
