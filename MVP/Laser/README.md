@@ -86,7 +86,7 @@ deactivate
 - **osclaser_trigger_V2.py**
 - **laserserver.py**
 - **laser.py**
-- **reaper.py**
+
 
 **System Diagram:**
 
@@ -102,9 +102,16 @@ graph TD
 
 - **laserserver.py:** This script handles communication with the slave devices, instructing them when to turn lasers on or off and which specific lasers to activate.
 
-- **reaper.py:** Manages OSC communication between devices, including the Master Pi, Slave Pi, and optionally, the Laptop.
 
 - **laser.py:** This script runs on your laptop and orchestrates the light show. It sends commands to the Master Pi, which then controls the lasers according to the show’s timing and sequence.
+
+### Things to take note
+- In Laser.py, ensure all IP addresses and port match what is in use, i.e. We are using 192.168.254.49 and port 2000 for the lasers.
+
+- Ensure that the GPIO pins listed in osclaser_trigger_V2.py align with the pins that are in use.
+
+
+
 
 Feel free to copy and adjust as needed!
 
