@@ -83,9 +83,9 @@ deactivate
 ```
 ### Main Files
 
-- **osclaser_trigger_V2.py**
-- **laserserver.py**
-- **laser.py**
+- [**osclaser_trigger_V2.py**](./osclaser_trigger_V2.py)
+- [**laserserver.py**](./laserserver.py)
+- [**Laser.py**](./Laser.py)
 
 
 **System Diagram:**
