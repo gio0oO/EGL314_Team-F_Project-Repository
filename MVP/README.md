@@ -40,6 +40,11 @@ This repository provides a comprehensive guide on setting up and running **The R
 - Boards
 - Dupont wires
 
+## Programming Lights for Station
+
+Follow the steps to program the different sequences needed for the Game Station in the [Lighting Folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/Lighting).
+
+
 ## Setting Up Sensors
 
 Follow the installation guide and instructions for setting up the sensors in the [Sensors folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Sensors).
