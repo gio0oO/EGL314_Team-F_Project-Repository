@@ -60,7 +60,7 @@ These are the 2 main files that you need to run the whole game:
 
 - [Main.py](./Main.py)
 - [reaper_py](./reaper_py)
-
+- [SeqMarkGUI.py](./SeqMarkGUI.py)]
 ### Main.py
 
 The `Main.py` script is the primary file that runs the game. Below is an explanation of the sequences we used, what they're for, and which marker we paired them up with:
@@ -101,6 +101,12 @@ Additional markers and their functions:
 ### reaper.py
 
 The `reaper.py` file handles all the OSC communications between the Raspberry Pi, Reaper, and GrandMA. This integration is crucial for coordinating audio and lighting effects in sync with the game events.
+
+
+
+### SeqMarkGUI.py
+
+The 'SeqMarkGUI.py' file helps us manually test sequences and markers that are being used during the game and during our presentation. 
 
 For detailed setup guides and code explanations, refer to the links above. If you have any questions or need further assistance, feel free to reach out.
 
