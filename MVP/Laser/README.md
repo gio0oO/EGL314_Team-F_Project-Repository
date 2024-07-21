@@ -30,7 +30,9 @@ Connections for All Components:
 
 - **Raspberry Pi to Relay Module:** Connect GPIO pins on the Raspberry Pi to the inputs on the relay module using Dupont wires.
 - **Relay Module to Laser Module:** Link the relay module outputs to the laser module inputs with Dupont wires.
-- [Link to Connection Diagram Image]
+- [![GPIO Connection](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/pi4_gpio%20(1).png)]
+
+- [![Laser Connection](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/blob/main/MVP/Captures/laserschematic.png)]
 
 ## Software
 
