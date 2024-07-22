@@ -54,6 +54,10 @@ Follow the installation guide and instructions for setting up the sensors in the
 
 Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
 
+
+## Laser Lightshow
+Codes and instructions for the Laser lightshow portion of MVP can be found in the  [Laser folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
+
 ## Example Setup
 
 Here is an example of how we set up our station:
