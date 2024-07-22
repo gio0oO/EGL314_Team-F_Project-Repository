@@ -56,7 +56,7 @@ Installation guide for the software and instructions for running the game can be
 
 
 ## Laser Lightshow
-Codes and instructions for the Laser lightshow portion of MVP can be found in the  [Laser folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
+Codes and instructions for the Laser lightshow portion of MVP can be found in the  [Laser folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/Laser).
 
 ## Example Setup
 
