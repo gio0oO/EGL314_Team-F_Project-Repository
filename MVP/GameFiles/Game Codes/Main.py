@@ -62,7 +62,6 @@ def detect_motion(sensor_pin):
             detection_count += 1
         time.sleep(POLLING_INTERVAL)
     return detection_count >= POLLING_COUNT * DETECTION_THRESHOLD
-
 def play_audio_cue(direction):
     if direction == "Left":
         send_message(Laptop, PORT, ADDR_LEFT_CUE, float(1))
@@ -147,7 +146,6 @@ def start_game(stages):
                 break
     finally:
         GPIO.cleanup()
-
 def play_stage(stage_num, cues, time_per_cue):
     missed_all = True  # Flag to track if all cues are missed in the stage
 
