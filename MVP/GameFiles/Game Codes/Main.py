@@ -182,6 +182,10 @@ def play_stage(stage_num, cues, time_per_cue):
         elif missed_all:
             print(f"Missed the {direction} board. Proceeding to the next cue in Stage {stage_num}.")
             play_stop()
+            loselight()
+            time.sleep(1)
+            OffSequence()
+            spotlight()
             time.sleep(CUE_DURATION)
         else:
             if stage_num == 1:
@@ -215,9 +219,9 @@ if __name__ == "__main__":
 
     # Define stages dictionary
     stages = {
-        1: {"cues": 2, "time_per_cue": 10},
-        2: {"cues": 2, "time_per_cue": 7},
-        3: {"cues": 2, "time_per_cue": 5}
+        1: {"cues": 3, "time_per_cue": 8},
+        2: {"cues": 3, "time_per_cue": 7},
+        3: {"cues": 3, "time_per_cue": 5}
     }
 
     # Run the Tkinter event loop
