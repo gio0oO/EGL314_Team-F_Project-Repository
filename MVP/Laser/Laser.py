@@ -1,120 +1,65 @@
-import tkinter as tk
 from pythonosc import udp_client
+import tkinter as tk
 import time
+import threading
 
-# Laser control IP address and port (replace with actual IPs and ports)
-PI_A_ADDR = "192.168.254.49"  # IP address of the Raspberry Pi controlling lasers
-LASER_PORT = 2000
+# Configuration for sending OSC messages
+send_addr = '192.168.254.49'  # Replace with the actual IP address of your OSC server
+send_port = 2000          # Replace with the actual port of your OSC server
+
 PI_B_ADDR = "192.168.254.242"  # IP address of the Raspberry Pi controlling NeoPixel lights
 NEOPIXEL_PORT = 2005
+
 REAPER_ADDR = "192.168.254.30"  # Replace with your Reaper's IP address
 REAPER_PORT = 7000
 
 # Create OSC clients
-laser_client = udp_client.SimpleUDPClient(PI_A_ADDR, LASER_PORT)
 neopixel_client = udp_client.SimpleUDPClient(PI_B_ADDR, NEOPIXEL_PORT)
 reaper_client = udp_client.SimpleUDPClient(REAPER_ADDR, REAPER_PORT)
 
-################################# Laser Functions #################################
-
 def send_message(client, address, message):
-    """Send a message via OSC and handle errors."""
     try:
         client.send_message(address, message)
-        print(f"Message '{message}' sent to {address}.")
+        print("Message sent:", message)
     except Exception as e:
-        print(f"Message not sent: {e}")
-
-def off_pattern(client):
-    """Turn off all lasers."""
-    print("Turning off all lasers.")
-    for speaker in range(1, 13):
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},0")
-
-def right_side_pattern(client):
-    """Activate the right side pattern."""
-    print("Activating right side pattern.")
-    for speaker in [1, 2, 3]:
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-
-def back_side_pattern(client):
-    """Activate the back side pattern."""
-    print("Activating back side pattern.")
-    for speaker in [4, 5, 6]:
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-
-def left_side_pattern(client):
-    """Activate the left side pattern."""
-    print("Activating left side pattern.")
-    for speaker in [7, 8, 9]:
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-
-def front_side_pattern(client):
-    """Activate the front side pattern."""
-    print("Activating front side pattern.")
-    for speaker in [10, 11, 12]:
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-
-def custom_pattern(client):
-    """Activate the custom laser pattern."""
-    print("Activating custom pattern.")
-    speakers = [1, 3, 4, 6, 7, 9, 10, 12]
-    for speaker in speakers:
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-
-def all_on_off_pattern(client):
-    """Activate all-on and all-off pattern."""
-    print("Activating all on and off pattern.")
-    for speaker in range(1, 13):
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},1")
-    time.sleep(1)
-    for speaker in range(1, 13):
-        for channel in range(1, 3):
-            send_message(client, "/print", f"{speaker},{channel},0")
-
-################################# NeoPixel Functions #################################
+        print(f"Message not sent: {str(e)}")
 
 def send_color_array(colors):
-    """Send an array of colors to the NeoPixel client."""
-    address = "/color_array"
+    """Flatten the color array and send it to NeoPixels."""
     flattened_colors = [color for rgb in colors for color in rgb]
-    neopixel_client.send_message(address, flattened_colors)
-    print(f"Sent color array: {flattened_colors}")
+    try:
+        neopixel_client.send_message('/color_array', flattened_colors)
+        print("NeoPixel colors sent:", flattened_colors)
+    except Exception as e:
+        print(f"NeoPixel colors not sent: {str(e)}")
 
-def send_brightness(brightness):
-    """Send brightness value to NeoPixel client."""
-    neopixel_client.send_message("/brightness", brightness)
-    print(f"Sent brightness {brightness}")
-
-def send_off_neopixel():
-    """Send off command to NeoPixel client."""
-    neopixel_client.send_message("/off", [])
-    print("Sent off message")
-
-def snake_up_fast(colors, total_duration=5):
-    """Run a fast snake effect on NeoPixels."""
-    print("Running fast snake effect.")
-    num_pixels = len(colors)
+def snake_up_fast(total_duration=5):
+    """Run a fast snake effect on NeoPixels with alternating colors."""
+    num_pixels = 170  # Update to the number of NeoPixels
     delay = total_duration / num_pixels  # Calculate the delay to fit the total duration
+    
+    # Define the color sequence
+    color_sequence = [(255, 0, 0), (255, 255, 255), (128, 0, 128), (0, 0, 255)]
+    
     for i in range(num_pixels):
+        if stop_flag:
+            break
         frame = [(0, 0, 0)] * num_pixels
-        frame[i] = colors[i]
+        frame[i] = color_sequence[i % len(color_sequence)]  # Alternate between colors
         send_color_array(frame)
         time.sleep(delay)
 
-def strobe_effect(colors, strobe_duration=0.05):
-    """Run a strobe effect on NeoPixels."""
-    print("Running strobe effect.")
+def strobe_effect(strobe_duration=0.05):
+    """Run a strobe effect on NeoPixels with alternating colors."""
     num_pixels = 170  # Assuming you have 170 NeoPixels
+    
+    # Define the color sequence
+    color_sequence = [(255, 0, 0), (255, 255, 255), (128, 0, 128), (0, 0, 255)]
+    
     for _ in range(int(5 / strobe_duration)):  # Run for 5 seconds
-        for color in colors:
+        if stop_flag:
+            break
+        for color in color_sequence:
             frame = [color] * num_pixels
             send_color_array(frame)
             time.sleep(strobe_duration)
@@ -122,105 +67,137 @@ def strobe_effect(colors, strobe_duration=0.05):
             send_color_array(frame)
             time.sleep(strobe_duration)
 
-################################# Light Show #################################
+# Laser control functions
+def front_lasers_on(value):
+    for i in range(10, 13):
+        msg = [f"{i},1,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
 
-def light_show():
-    """Run the light show sequence."""
-    pattern_duration = 3  # Duration per laser pattern in seconds
-    total_show_duration = 5  # Total show duration in seconds
-    start_time = time.time()
+def right_lasers_on(value):
+    for i in range(1, 4, 2):
+        msg = [f"{i},1,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+    for i in range(2, 4, 2):
+        msg = [f"{i},2,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
 
-    # Jump to Marker One in Reaper
-    send_message(reaper_client, "/marker/63", 1.0)
+def back_lasers_on(value):
+    for i in range(4, 7, 2):
+        msg = [f"{i},1,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+    for i in range(5, 7, 2):
+        msg = [f"{i},2,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
 
-    # Trigger Play in Reaper
+def left_lasers_on(value):
+    for i in range(7, 10, 2):
+        msg = [f"{i},1,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+    for i in range(8, 10, 2):
+        msg = [f"{i},2,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+
+def all_middle_lasers_on(value):
+    for i in range(1, 7):
+        if i % 2 == 0:
+            msg = [f"{i},2,{value}"]
+            send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+
+def every_other_speaker_on(value):
+    for i in [1, 3, 5, 7, 9, 12]:
+        msg = [f"{i},1,{value}"]
+        send_message(udp_client.SimpleUDPClient(send_addr, send_port), '/print', msg)
+
+# Function to turn off all lasers
+def turn_off_all_lasers():
+    front_lasers_on(0)
+    right_lasers_on(0)
+    back_lasers_on(0)
+    left_lasers_on(0)
+    all_middle_lasers_on(0)
+    every_other_speaker_on(0)
+
+def run_neopixel_effects():
+    global stop_flag
+    stop_flag = False
+    snake_up_fast(total_duration=5)
+    strobe_effect(strobe_duration=0.05)
+
+def jump_to_marker(marker_number):
+    """Jump to a specified marker in Reaper."""
+    send_message(reaper_client, "/marker/{}".format(marker_number), 1.0)
+
+def trigger_play_stop():
+    """Trigger Play/Stop action in Reaper."""
     send_message(reaper_client, "/action/40044", 1.0)
 
-    # First 5 seconds: Fast snake effect
-    colors = [(255, 0, 0)] * 57 + [(0, 255, 0)] * 56 + [(0, 0, 255)] * 57
-    snake_up_fast(colors, total_duration=5)
+def start_show():
+    global stop_flag
+    stop_flag = False
 
-    # Strobe effect with Purple, Red, White
-    strobe_colors = [(128, 0, 128), (255, 0, 0), (255, 255, 255)]  # Purple, Red, White
-    strobe_effect(strobe_colors, strobe_duration=0.05)  # Faster strobe
+    # Jump to marker 63 in Reaper before starting the music
+    jump_to_marker(63)
 
-    elapsed_time = time.time() - start_time
+    # Start NeoPixel effects in a separate thread
+    neopixel_thread = threading.Thread(target=run_neopixel_effects)
+    neopixel_thread.start()
 
-    # Run patterns until the total show duration is reached
-    while elapsed_time < total_show_duration:
-        # Run right side pattern for 3 seconds
-        print("Running right side pattern.")
-        right_side_pattern(laser_client)
-        colors = [(255, 0, 0)] * 57 + [(0, 255, 0)] * 56 + [(0, 0, 255)] * 57
-        send_color_array(colors)
-        time.sleep(pattern_duration)
-        off_pattern(laser_client)
+    # Trigger Play/Stop in Reaper to start the music
+    trigger_play_stop()
 
-        # Update elapsed time
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= total_show_duration:
-            break
+    # Define laser sequence for the 25-second show
+    start_time = time.time()
+    end_time = start_time + 25  # Set the end time to 25 seconds from start time
 
-        # Run back side pattern for 3 seconds
-        print("Running back side pattern.")
-        back_side_pattern(laser_client)
-        colors = [(0, 255, 0)] * 57 + [(0, 0, 255)] * 56 + [(255, 0, 0)] * 57
-        send_color_array(colors)
-        time.sleep(pattern_duration)
-        off_pattern(laser_client)
+    while time.time() < end_time:
+        front_lasers_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Update elapsed time
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= total_show_duration:
-            break
+        right_lasers_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Run left side pattern for 3 seconds
-        print("Running left side pattern.")
-        left_side_pattern(laser_client)
-        colors = [(0, 0, 255)] * 57 + [(255, 0, 0)] * 56 + [(0, 255, 0)] * 57
-        send_color_array(colors)
-        time.sleep(pattern_duration)
-        off_pattern(laser_client)
+        back_lasers_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Update elapsed time
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= total_show_duration:
-            break
+        left_lasers_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Run front side pattern for 3 seconds
-        print("Running front side pattern.")
-        front_side_pattern(laser_client)
-        colors = [(255, 255, 0)] * 57 + [(0, 255, 255)] * 56 + [(255, 0, 255)] * 57
-        send_color_array(colors)
-        time.sleep(pattern_duration)
-        off_pattern(laser_client)
+        all_middle_lasers_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Update elapsed time
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= total_show_duration:
-            break
+        every_other_speaker_on(1)
+        time.sleep(2)  # Wait for 2 seconds
+        turn_off_all_lasers()  # Turn off lasers
 
-        # Run custom pattern for 3 seconds
-        print("Running custom pattern.")
-        custom_pattern(laser_client)
-        colors = [(255, 0, 0)] * 57 + [(0, 255, 0)] * 56 + [(0, 0, 255)] * 57
-        send_color_array(colors)
-        time.sleep(pattern_duration)
-        off_pattern(laser_client)
+    # Stop NeoPixel effects
+    stop_flag = True
+    neopixel_thread.join()
 
-        # Update elapsed time
-        elapsed_time = time.time() - start_time
+    # Stop the music by triggering Play/Stop in Reaper again
+    trigger_play_stop()
 
-    # Ensure everything is turned off at the end of the show
-    print("Turning off all lasers and NeoPixels.")
-    off_pattern(laser_client)
-    send_off_neopixel()
+    print("Show finished.")
 
-# GUI Setup
-root = tk.Tk()
-root.title("Laser Light Show")
+# Setup UI function
+def setup_ui():
+    main = tk.Tk()
+    main.title("Laser and NeoPixel Show Control")
 
-start_button = tk.Button(root, text="Start Light Show", command=light_show)
-start_button.pack(pady=20)
+    # Button to start the show
+    start_button = tk.Button(main, text="Start Show", command=start_show)
+    start_button.pack(pady=20)
 
-root.mainloop()
+    return main
+
+# Main function to run the GUI
+def main():
+    root = setup_ui()
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
