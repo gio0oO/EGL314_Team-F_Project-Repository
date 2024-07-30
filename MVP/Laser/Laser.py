@@ -89,9 +89,9 @@ def send_off2():
 def start():
     play_stop()
     go_to_laser_marker()
-    # firstlight()
+    firstlight()
     time.sleep(12)
-    # OffSequence()
+    OffSequence()
 
     front_side_pattern()
     time.sleep(10)
@@ -129,7 +129,7 @@ def start_show():
                 time.sleep(strobe_delay)
 
         # Optionally turn off all lights after the strobe effect
-        # lastlight()
+        lastlight()
         time.sleep(10)
     
         send_off()
@@ -142,7 +142,7 @@ def stop_show():
     send_off()
     send_off2()
     play_stop()
-    # OffSequence()
+    OffSequence()
     off_pattern()
 
 # Create the tkinter window
