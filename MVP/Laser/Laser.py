@@ -49,7 +49,7 @@ def lastlight():
     send_message("192.168.254.229", 8888, "/gma3/cmd", "Go+: Sequence 9")
 
 def front_side_pattern():
-    for speaker in [11, 5, 12]:
+    for speaker in [2,5,8,11]:
         for channel in range(1, 3):
             send_message1(laser_client, "/print", f"{speaker},{channel},1")
 
