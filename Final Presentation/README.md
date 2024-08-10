@@ -43,12 +43,12 @@ This repository provides a comprehensive guide on setting up and running **The R
 
 ## Programming Lights for Station
 
-Follow the steps to program the different sequences needed for the Game Station in the [Lighting Folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/Final%Presentation/Lighting).
+Follow the steps to program the different sequences needed for the Game Station in the [Lighting Folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/Final Presentation/Lighting).
 
 
 ## Running the Game
 
-Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/Final%Presentation/Game%20Codes).
+Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/Final Presentation/Game%20Codes).
 
 
 
