@@ -49,7 +49,7 @@ def lastlight():
     send_message("192.168.254.229", 8888, "/gma3/cmd", "Go+: Sequence 9")
 
 def front_side_pattern():
-    for speaker in [2,5,8,11]:
+    for speaker in [2, 5, 8, 11]:
         for channel in range(1, 3):
             send_message1(laser_client, "/print", f"{speaker},{channel},1")
 
@@ -86,6 +86,22 @@ def send_off2():
     client2.send_message("/off", [])
     print("Sent off message")
 
+def light_up_pixels_one_by_one(colors, delay):
+    for i in range(len(colors)):
+        colors[i] = (255, 255, 255)  # Change to desired color
+        send_color_array(colors)
+        time.sleep(delay)
+
+def strobe_effect(strobe_colors, strobe_duration, strobe_delay):
+    end_time = time.time() + strobe_duration
+    while time.time() < end_time:
+        for color in strobe_colors:
+            send_color_array([color] * 170)  # Balloon NeoPixels strobe
+            send_color_array2([color] * 170)  # Truss NeoPixels strobe
+            time.sleep(strobe_delay)
+            send_off()
+            time.sleep(strobe_delay)
+
 def start():
     play_stop()
     go_to_laser_marker()
@@ -99,34 +115,25 @@ def start():
 
 def start_show():
     try:
-        start()
+        play_stop()
+        go_to_laser_marker()
+        
+        # Run firstlight for 10 seconds, then turn it off
+        firstlight()
+        time.sleep(16)
+        OffSequence()
 
-        # Define initial colors (all off)
+        # Run front_side_pattern for 13 seconds
+        front_side_pattern()
+        time.sleep(6)
+        off_pattern()
+
+        # Light up each pixel one by one for 26.5 seconds
         colors = [(0, 0, 0)] * 170
-
-        # Duration to wait between lighting each pixel
-        delay = 26.5 / 170  # seconds per pixel
-
-        # Light up each pixel one by one
-        for i in range(170):
-            colors[i] = (255, 255, 255)  # Change to desired color
-            send_color_array(colors)
-            time.sleep(delay)
+        light_up_pixels_one_by_one(colors, 26.5 / 170)
 
         # Strobe effect on both balloon and truss NeoPixels
-        strobe_duration = 20  # seconds
-        strobe_colors = [(128, 0, 128), (0, 0, 255), (255, 0, 0)]  # Purple, Blue, Red
-        strobe_delay = 0.2  # seconds per strobe cycle
-
-        end_time = time.time() + strobe_duration
-        while time.time() < end_time:
-            for color in strobe_colors:
-                send_color_array([color] * 170)  # Balloon NeoPixels strobe
-                send_color_array2([color] * 170)  # Truss NeoPixels strobe
-                time.sleep(strobe_delay)
-                send_off()
-            
-                time.sleep(strobe_delay)
+        strobe_effect([(128, 0, 128), (0, 0, 255), (255, 0, 0)], 20, 0.2)
 
         # Optionally turn off all lights after the strobe effect
         lastlight()
