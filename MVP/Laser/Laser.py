@@ -1,159 +1,167 @@
 import tkinter as tk
 from pythonosc import udp_client
 import time
+from reaper import send_message
 
-# Functions to control lasers and NeoPixel lights
-def send_message(receiver_ip, receiver_port, address, message):
+# Set the IP and port of the OSC server (the Raspberry Pi running your NeoPixel control code)
+SERVER_IP = "192.168.254.242"  # Change to your RPi's IP address
+SERVER_PORT = 2005
+
+# Set the IP and port for the second pi
+SERVER_IP2 = "192.168.254.102"  # Change to your RPi's IP address
+SERVER_PORT2 = 2006
+
+Laptop = "192.168.254.30"
+PORT = 7000
+
+PI_A_ADDR = "192.168.254.49"  # IP address of the Raspberry Pi controlling lasers
+LASER_PORT = 2000
+
+ADDR_PLAY_STOP = "/action/40044"  # Address for Play_Stop
+ADDR_LASER_MARKER = "/marker/63"
+
+# Create an OSC client
+client = udp_client.SimpleUDPClient(SERVER_IP, SERVER_PORT)
+client2 = udp_client.SimpleUDPClient(SERVER_IP2, SERVER_PORT2)
+laser_client = udp_client.SimpleUDPClient(PI_A_ADDR, LASER_PORT)
+
+def send_message1(client, address, message):
     try:
-        client = udp_client.SimpleUDPClient(receiver_ip, receiver_port)
         client.send_message(address, message)
         print(f"Message '{message}' sent to {address}.")
     except Exception as e:
         print(f"Message not sent: {e}")
 
-def off_pattern(receiver_ip, receiver_port):
-    for speaker in range(1, 13):
-        for channel in range(1, 3):
-            send_message(receiver_ip, receiver_port, "/print", f"{speaker},{channel},0")
+def play_stop():
+    send_message(Laptop, PORT, ADDR_PLAY_STOP, float(1))
 
-def send_color(receiver_ip, receiver_port, r, g, b):
-    try:
-        client = udp_client.SimpleUDPClient(receiver_ip, receiver_port)
-        client.send_message("/color", [r, g, b])
-        print(f"Color set to ({r}, {g}, {b}).")
-    except Exception as e:
-        print(f"Color not set: {e}")
+def go_to_laser_marker():
+    send_message(Laptop, PORT, ADDR_LASER_MARKER, float(1))
+    time.sleep(2)  # Delay before starting Stage 2
 
-# IP address and port of the receiving Raspberry Pi and Reaper
-PI_A_ADDR = "192.168.254.49"  # Change to your RPi's IP address for lasers
-PORT = 2000
-PI_B_ADDR = "192.168.254.242"  # Change to your RPi's IP address for NeoPixel
-NEOPIXEL_PORT = 2005
-REAPER_ADDR = "192.168.254.30"  # Change to your Reaper's IP address
-REAPER_PORT = 7000
+def OffSequence():
+    send_message("192.168.254.229", 8888, "/gma3/cmd", "Off RunningSequence")
 
-# Patterns for different sides
-def right_side_pattern():
-    for speaker in [1, 2, 3]:
-        for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
+def firstlight():
+    send_message("192.168.254.229", 8888, "/gma3/cmd", "Go+: Sequence 7")
 
-def back_side_pattern():
-    for speaker in [4, 5, 6]:
-        for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
-
-def left_side_pattern():
-    for speaker in [7, 8, 9]:
-        for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
+def lastlight():
+    send_message("192.168.254.229", 8888, "/gma3/cmd", "Go+: Sequence 9")
 
 def front_side_pattern():
-    for speaker in [10, 11, 12]:
+    for speaker in [2, 5, 8, 11]:
         for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
+            send_message1(laser_client, "/print", f"{speaker},{channel},1")
 
-def custom_pattern():
-    speakers = [1, 3, 4, 6, 7, 9, 10, 12]
-    for speaker in speakers:
-        for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
-
-# New pattern to turn all lasers on and off sequentially
-def all_on_off_pattern():
+def off_pattern():
     for speaker in range(1, 13):
         for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},1")
-    time.sleep(1)  # Add a short delay before turning off
-    for speaker in range(1, 13):
-        for channel in range(1, 3):
-            send_message(PI_A_ADDR, PORT, "/print", f"{speaker},{channel},0")
+            send_message1(laser_client, "/print", f"{speaker},{channel},0")
 
-# Function to control the laser show, NeoPixel lights, and Reaper
-def laser_show():
-    pattern_duration = 0.41  # Duration per pattern in seconds
-    total_show_duration = 30  # Total show duration in seconds
-    colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)]
-    color_index = 0
-    start_time = time.time()
+def send_color_array(colors):
+    address = "/color_array"
+    flattened_colors = [color for rgb in colors for color in rgb]
+    client.send_message(address, flattened_colors)
+    print(f"Sent color array: {flattened_colors}")
 
-    # Jump to Marker One in Reaper
-    send_message(REAPER_ADDR, REAPER_PORT, "/marker/63", 1.0)
+def send_brightness(brightness):
+    client.send_message("/brightness", brightness)
+    print(f"Sent brightness {brightness}")
 
-    # Trigger Play in Reaper
-    send_message(REAPER_ADDR, REAPER_PORT, "/action/40044", 1.0)
+def send_off():
+    client.send_message("/off", [])
+    print("Sent off message")
 
-    while time.time() - start_time < total_show_duration:
-        right_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def send_color_array2(colors):
+    address = "/color_array"
+    flattened_colors = [color for rgb in colors for color in rgb]
+    client2.send_message(address, flattened_colors)
+    print(f"Sent color array: {flattened_colors}")
 
-        back_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def send_brightness2(brightness):
+    client2.send_message("/brightness", brightness)
+    print(f"Sent brightness {brightness}")
 
-        left_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def send_off2():
+    client2.send_message("/off", [])
+    print("Sent off message")
 
-        front_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def light_up_pixels_one_by_one(colors, delay):
+    for i in range(len(colors)):
+        colors[i] = (255, 255, 255)  # Change to desired color
+        send_color_array(colors)
+        time.sleep(delay)
 
-        custom_pattern()  # Activate custom pattern
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def strobe_effect(strobe_colors, strobe_duration, strobe_delay):
+    end_time = time.time() + strobe_duration
+    while time.time() < end_time:
+        for color in strobe_colors:
+            send_color_array([color] * 170)  # Balloon NeoPixels strobe
+            send_color_array2([color] * 170)  # Truss NeoPixels strobe
+            time.sleep(strobe_delay)
+            send_off()
+            time.sleep(strobe_delay)
 
-        all_on_off_pattern()  # Activate all lasers on/off pattern
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+def start():
+    play_stop()
+    go_to_laser_marker()
+    firstlight()
+    time.sleep(12)
+    OffSequence()
 
-        front_side_pattern()
-        back_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
+    front_side_pattern()
+    time.sleep(10)
+    off_pattern()
 
-        left_side_pattern()
-        right_side_pattern()
-        send_color(PI_B_ADDR, NEOPIXEL_PORT, *colors[color_index % len(colors)])
-        color_index += 1
-        time.sleep(pattern_duration)
-        off_pattern(PI_A_ADDR, PORT)
-
-    off_pattern(PI_A_ADDR, PORT)
-    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0)  # Turn off NeoPixel
-
-# GUI setup
 def start_show():
-    laser_show()
+    try:
+        play_stop()
+        go_to_laser_marker()
+        
+        # Run firstlight for 10 seconds, then turn it off
+        firstlight()
+        time.sleep(16)
+        OffSequence()
+
+        # Run front_side_pattern for 13 seconds
+        front_side_pattern()
+        time.sleep(6)
+        off_pattern()
+
+        # Light up each pixel one by one for 26.5 seconds
+        colors = [(0, 0, 0)] * 170
+        light_up_pixels_one_by_one(colors, 26.5 / 170)
+
+        # Strobe effect on both balloon and truss NeoPixels
+        strobe_effect([(128, 0, 128), (0, 0, 255), (255, 0, 0)], 20, 0.2)
+
+        # Optionally turn off all lights after the strobe effect
+        lastlight()
+        time.sleep(10)
+    
+        send_off()
+        play_stop()
+        
+    except Exception as e:
+        print(f"Error: {e}")
 
 def stop_show():
-    off_pattern(PI_A_ADDR, PORT)
-    send_color(PI_B_ADDR, NEOPIXEL_PORT, 0, 0, 0)  # Turn off NeoPixel
+    send_off()
+    send_off2()
+    play_stop()
+    OffSequence()
+    off_pattern()
 
-# Main GUI window
+# Create the tkinter window
 root = tk.Tk()
-root.title("Laser Show Controller")
+root.title("Light Show Controller")
 
-# Start and stop buttons
+# Create and place the buttons
 start_button = tk.Button(root, text="Start Show", command=start_show)
 start_button.pack(pady=10)
 
 stop_button = tk.Button(root, text="Stop Show", command=stop_show)
 stop_button.pack(pady=10)
 
+# Run the tkinter main loop
 root.mainloop()

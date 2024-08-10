@@ -14,6 +14,7 @@ graph TD
     RPi_Game -->|WiFi| GrandMA3[GrandMA3]
     RPi_Game -->|WiFi| Reaper[Reaper]
     GrandMA3 -->|SACN| Moving_Heads[Moving Heads]
+    
     Reaper_DAW -->|Dante VSC| L_ISA_Processor[L-ISA Processor]
     L_ISA_Processor -->|MetaData| L_ISA_Controller[L-ISA Controller]
     L_ISA_Controller -->|DANTE| Yamaha_QL1[Yamaha QL1]
@@ -52,6 +53,10 @@ Follow the installation guide and instructions for setting up the sensors in the
 ## Running the Game
 
 Installation guide for the software and instructions for running the game can be found in the [Game Code folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/GameFiles/Game%20Codes).
+
+
+## Laser Lightshow
+Codes and instructions for the Laser lightshow portion of MVP can be found in the  [Laser folder](https://github.com/gio0oO/EGL314_Team-F_Project-Repository/tree/main/MVP/Laser).
 
 ## Example Setup
 

@@ -62,7 +62,6 @@ def detect_motion(sensor_pin):
             detection_count += 1
         time.sleep(POLLING_INTERVAL)
     return detection_count >= POLLING_COUNT * DETECTION_THRESHOLD
-
 def play_audio_cue(direction):
     if direction == "Left":
         send_message(Laptop, PORT, ADDR_LEFT_CUE, float(1))
@@ -147,7 +146,6 @@ def start_game(stages):
                 break
     finally:
         GPIO.cleanup()
-
 def play_stage(stage_num, cues, time_per_cue):
     missed_all = True  # Flag to track if all cues are missed in the stage
 
@@ -184,6 +182,10 @@ def play_stage(stage_num, cues, time_per_cue):
         elif missed_all:
             print(f"Missed the {direction} board. Proceeding to the next cue in Stage {stage_num}.")
             play_stop()
+            loselight()
+            time.sleep(1)
+            OffSequence()
+            spotlight()
             time.sleep(CUE_DURATION)
         else:
             if stage_num == 1:
@@ -217,9 +219,9 @@ if __name__ == "__main__":
 
     # Define stages dictionary
     stages = {
-        1: {"cues": 2, "time_per_cue": 10},
-        2: {"cues": 2, "time_per_cue": 7},
-        3: {"cues": 2, "time_per_cue": 5}
+        1: {"cues": 3, "time_per_cue": 8},
+        2: {"cues": 3, "time_per_cue": 7},
+        3: {"cues": 3, "time_per_cue": 5}
     }
 
     # Run the Tkinter event loop
